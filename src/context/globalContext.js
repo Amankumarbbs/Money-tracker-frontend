@@ -24,7 +24,7 @@ export const GlobalProvider = ({children}) => {
 
     const getIncomes = async () => {
         const response = await axios.get(`${BASE_URL}get-incomes`)
-        setIncomes(response.data)
+        setIncomes((response.data==null||response.data.length===0)?[{"amount":0}]:response.data)
         console.log(response.data)
     }
 
@@ -54,7 +54,7 @@ export const GlobalProvider = ({children}) => {
 
     const getExpenses = async () => {
         const response = await axios.get(`${BASE_URL}get-expenses`)
-        setExpenses(response.data)
+        setExpenses((response.data==null||response.data.length===0)?[{"amount":0}]:response.data)
         console.log(response.data)
     }
 
